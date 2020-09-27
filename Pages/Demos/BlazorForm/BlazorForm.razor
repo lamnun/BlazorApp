@@ -1,0 +1,34 @@
+﻿@page "/BlazorForm"
+
+
+<h3>BlazorForm</h3>
+
+@*<form action="/" method="post"></form>*@
+
+<EditForm Model="@exampleModel" OnInvalidSubmit="@btnSumit_Click">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary></ValidationSummary>
+
+    <InputText id ="txtName" @bind-Value ="exampleModel.Name"> </InputText>
+    <ValidationMessage For="@(()=> exampleModel.Name)"></ValidationMessage>
+
+    <button type="submit">Submit</button>
+</EditForm>
+
+<hr />
+@exampleModel.Name
+
+@code {
+
+    private ExampleModel exampleModel = new ExampleModel();
+
+    protected override void OnInitialized()
+    {
+        //exampleModel.Name = "홍길동";
+    }
+
+    private void btnSumit_Click()
+    {
+
+    }
+}
